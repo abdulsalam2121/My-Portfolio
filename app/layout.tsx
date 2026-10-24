@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Geist } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
 
-const body = Geist({ variable: "--font-body", subsets: ["latin"] });
-const head = Bricolage_Grotesque({ variable: "--font-head", subsets: ["latin"], axes: ["opsz"] });
+const sans = Geist({ variable: "--f-sans", subsets: ["latin"] });
+const mono = Geist_Mono({ variable: "--f-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f6fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#080914" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f5f7" },
+    { media: "(prefers-color-scheme: dark)", color: "#090b0e" },
   ],
 };
 
@@ -31,7 +31,7 @@ const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${body.variable} ${head.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

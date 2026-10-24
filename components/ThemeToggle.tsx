@@ -3,30 +3,32 @@
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
+export function toggleTheme() {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try {
+    localStorage.setItem("theme", next);
+  } catch {}
+  window.dispatchEvent(new Event("themechange"));
+}
+
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    // sync with what the inline script set before paint
-    setDark(document.documentElement.dataset.theme === "dark");
+    const sync = () => setDark(document.documentElement.dataset.theme === "dark");
+    sync();
+    window.addEventListener("themechange", sync);
+    return () => window.removeEventListener("themechange", sync);
   }, []);
-
-  function toggle() {
-    const next = dark ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    setDark(!dark);
-    try {
-      localStorage.setItem("theme", next);
-    } catch {}
-  }
 
   return (
     <button
-      onClick={toggle}
+      onClick={toggleTheme}
       aria-label={`Switch to ${dark ? "light" : "dark"} theme`}
-      className="grid size-10 place-items-center rounded-full border border-line bg-surface text-muted transition hover:scale-105 hover:text-ink"
+      className="grid size-9 place-items-center rounded-lg border border-line bg-surface text-muted transition hover:text-ink"
     >
-      {dark ? <Sun size={17} /> : <Moon size={17} />}
+      {dark ? <Sun size={16} /> : <Moon size={16} />}
     </button>
   );
 }
