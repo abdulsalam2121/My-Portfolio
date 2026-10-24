@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { PhoneFrame } from "./BrowserFrame";
 import { Reveal } from "./Reveal";
 import { ShotViewer } from "./ShotViewer";
 import { otherWork, projects } from "@/lib/data";
@@ -82,9 +81,6 @@ export function Work() {
 
                 <div className={`relative ${i % 2 ? "lg:order-1" : ""}`}>
                   <ShotViewer shots={p.shots} url={p.liveLabel} onDark />
-                  <div className="float pointer-events-none absolute -right-3 top-[38%] hidden w-[17%] xl:block">
-                    <PhoneFrame src={p.mobile.src} alt={`${p.title} on mobile`} />
-                  </div>
                 </div>
               </div>
             </article>

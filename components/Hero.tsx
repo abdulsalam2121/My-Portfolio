@@ -25,7 +25,7 @@ export function Hero() {
 
           <Reveal delay={0.06}>
             <h1 className="display text-[clamp(2.9rem,6.6vw,5.4rem)]">
-              I design, build and ship full-stack web <span className="marker">products.</span>
+              I design, build and ship full‑stack web <span className="marker">products.</span>
             </h1>
           </Reveal>
 

@@ -30,7 +30,7 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <>
-      <Nav />
+      <Nav onColor />
       <main>
         <header
           className="relative overflow-hidden text-white"
@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: Props) {
         </header>
 
         <div className="mx-auto max-w-6xl px-5 pb-20">
-          <Reveal className="-mt-10">
+          <Reveal className="relative z-10 -mt-10">
             <dl className="card grid gap-px overflow-hidden !bg-line sm:grid-cols-3">
               <div className="bg-surface p-6">
                 <dt className="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">Role</dt>

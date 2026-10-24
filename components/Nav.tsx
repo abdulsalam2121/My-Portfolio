@@ -13,7 +13,7 @@ const links = [
   { href: "/#experience", label: "Experience" },
 ];
 
-export function Nav() {
+export function Nav({ onColor = false }: { onColor?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -24,6 +24,8 @@ export function Nav() {
     return () => window.removeEventListener("scroll", on);
   }, []);
 
+  // over a coloured hero (case studies) the bar starts white-on-colour, then flips once it has a background
+  const light = onColor && !scrolled && !open;
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
@@ -35,7 +37,7 @@ export function Nav() {
           <span className="grid size-8 place-items-center rounded-xl bg-accent text-[13px] font-bold text-accent-ink">
             AS
           </span>
-          <span className="display text-lg tracking-tight">{profile.short}</span>
+          <span className={`display text-lg tracking-tight ${light ? "text-white" : ""}`}>{profile.short}</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -43,7 +45,7 @@ export function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:bg-surface-2 hover:text-ink"
+              className={`rounded-full px-4 py-2 text-sm font-medium transition ${light ? "text-white/85 hover:bg-white/15 hover:text-white" : "text-muted hover:bg-surface-2 hover:text-ink"}`}
             >
               {l.label}
             </Link>
