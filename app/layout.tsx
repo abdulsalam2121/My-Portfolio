@@ -6,7 +6,7 @@ import { profile } from "@/lib/data";
 const sans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 const display = Instrument_Serif({
-  variable: "--font-display",
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],

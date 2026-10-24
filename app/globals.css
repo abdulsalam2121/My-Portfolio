@@ -35,7 +35,7 @@
   --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-display), Georgia, serif;
+  --font-display: var(--font-instrument), Georgia, serif;
 }
 
 html {
@@ -82,7 +82,7 @@ body::before {
 }
 
 .display {
-  font-family: var(--font-display);
+  font-family: var(--font-instrument), Georgia, serif;
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 0.95;
