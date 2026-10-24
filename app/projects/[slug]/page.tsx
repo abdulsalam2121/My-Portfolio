@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PhoneFrame } from "@/components/BrowserFrame";
+import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
-import { Shell } from "@/components/Shell";
 import { ShotViewer } from "@/components/ShotViewer";
 import { profile, projects } from "@/lib/data";
 
@@ -29,103 +29,100 @@ export default async function ProjectPage({ params }: Props) {
   const next = projects[(index + 1) % projects.length];
 
   return (
-    <Shell crumb={`${p.title} case study`}>
-      <Link href="/#projects" className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-ink">
-        <ArrowLeft size={16} /> All projects
-      </Link>
+    <>
+      <Nav />
+      <main className="mx-auto max-w-6xl px-5 pb-20 pt-32 sm:pt-40">
+        <Link href="/#work" className="label link-underline inline-flex items-center gap-2 hover:!text-ink">
+          <ArrowLeft size={14} /> All work
+        </Link>
 
-      <Reveal>
-        <div className="mt-6 flex flex-wrap items-start justify-between gap-5">
-          <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">{p.title}</h1>
-              <span className="chip">
-                <span className="live-dot size-1.5 rounded-full bg-ok" /> Live
-              </span>
-            </div>
-            <p className="mt-2 text-lg text-muted">{p.tagline}</p>
-          </div>
+        <Reveal>
+          <p className="label mb-4 mt-10">
+            {p.kind} · {p.year}
+          </p>
+          <h1 className="display text-[clamp(3.5rem,11vw,9rem)]">{p.title}</h1>
+          <p className="display mt-4 text-3xl italic text-accent sm:text-4xl">{p.tagline}</p>
           <a
             href={p.live}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex h-11 items-center gap-2 rounded-lg bg-accent px-5 text-sm font-semibold text-accent-ink transition hover:brightness-110"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:bg-accent hover:text-accent-ink"
           >
-            Visit {p.liveLabel} <ArrowUpRight size={16} />
+            Visit {p.liveLabel} <ArrowUpRight size={15} />
           </a>
-        </div>
+        </Reveal>
 
-        <dl className="panel mt-8 grid divide-y divide-line sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {[
-            ["Role", p.role],
-            ["Stack", p.stack.join(" · ")],
-            ["Year", `${p.year} · live in production`],
-          ].map(([k, v]) => (
-            <div key={k} className="p-5">
-              <dt className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-muted">{k}</dt>
-              <dd className="text-[15px] leading-relaxed">{v}</dd>
+        <Reveal delay={0.1}>
+          <dl className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+            <div className="bg-bg p-6">
+              <dt className="label mb-2">Role</dt>
+              <dd className="text-sm leading-relaxed">{p.role}</dd>
             </div>
-          ))}
-        </dl>
-      </Reveal>
+            <div className="bg-bg p-6">
+              <dt className="label mb-2">Stack</dt>
+              <dd className="font-mono text-sm leading-relaxed">{p.stack.join(" · ")}</dd>
+            </div>
+            <div className="bg-bg p-6">
+              <dt className="label mb-2">Year</dt>
+              <dd className="text-sm">{p.year} · live in production</dd>
+            </div>
+          </dl>
+        </Reveal>
 
-      <Reveal>
-        <div className="mt-10 grid gap-3 md:grid-cols-2">
-          <div className="panel p-6">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">The problem</p>
-            <p className="text-lg leading-relaxed tracking-tight">{p.problem}</p>
-          </div>
-          <div className="panel p-6">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-accent">The solution</p>
-            <p className="leading-relaxed text-muted">{p.solution}</p>
-          </div>
+        <div className="mt-24 grid gap-14 lg:grid-cols-2">
+          <Reveal>
+            <p className="label mb-3 !text-accent">The problem</p>
+            <p className="text-xl leading-relaxed">{p.problem}</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="label mb-3 !text-accent">The solution</p>
+            <p className="text-xl leading-relaxed text-muted">{p.solution}</p>
+          </Reveal>
         </div>
-      </Reveal>
 
-      <Reveal>
-        <h2 className="mb-4 mt-14 text-2xl font-semibold tracking-tight">The product, screen by screen</h2>
-        <div className="grid items-start gap-4 lg:grid-cols-[1fr_180px]">
-          <div className="panel p-4 sm:p-5">
+        <Reveal className="mt-24">
+          <p className="label mb-5">The product, screen by screen</p>
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_190px]">
             <ShotViewer shots={p.shots} url={p.liveLabel} />
+            <div className="hidden lg:block">
+              <PhoneFrame src={p.mobile.src} alt={`${p.title} on mobile`} />
+              <p className="label mt-3 text-center">Mobile</p>
+            </div>
           </div>
-          <div className="hidden lg:block">
-            <PhoneFrame src={p.mobile.src} alt={`${p.title} on mobile`} />
-            <p className="mt-3 text-center text-xs text-muted">Responsive on mobile</p>
-          </div>
-        </div>
-      </Reveal>
+        </Reveal>
 
-      <Reveal>
-        <h2 className="mb-4 mt-14 text-2xl font-semibold tracking-tight">What it does</h2>
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {p.highlights.map((h, i) => (
-            <li key={h} className="panel flex gap-4 p-5">
-              <span className="font-mono text-sm text-accent">0{i + 1}</span>
-              <span className="leading-relaxed">{h}</span>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
+        <Reveal className="mt-24">
+          <p className="label mb-5">What it does</p>
+          <ul className="divide-y divide-line border-y border-line">
+            {p.highlights.map((h, i) => (
+              <li key={h} className="flex gap-6 py-5">
+                <span className="label w-8 shrink-0 pt-1">0{i + 1}</span>
+                <span className="text-lg">{h}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-      <Reveal>
-        <Link
-          href={`/projects/${next.slug}`}
-          className="panel group mt-14 flex items-center justify-between gap-6 p-6 transition hover:border-accent/60 sm:p-8"
-        >
-          <div>
-            <p className="mb-1 text-sm text-muted">Next project</p>
-            <p className="text-3xl font-semibold tracking-tight sm:text-4xl">{next.title}</p>
-          </div>
-          <ArrowRight size={28} className="text-muted transition group-hover:translate-x-1 group-hover:text-accent" />
-        </Link>
-        <p className="mt-8 text-center text-sm text-muted">
-          Want something like this?{" "}
-          <a href={`mailto:${profile.email}`} className="font-semibold text-ink underline underline-offset-4">
-            Let’s talk
-          </a>
-          .
-        </p>
-      </Reveal>
-    </Shell>
+        <Reveal className="mt-28">
+          <Link
+            href={`/projects/${next.slug}`}
+            className="group flex items-end justify-between gap-6 rounded-[2rem] border border-line bg-surface p-8 transition hover:border-accent sm:p-12"
+          >
+            <div>
+              <p className="label mb-3">Next project</p>
+              <p className="display text-5xl sm:text-7xl">{next.title}</p>
+            </div>
+            <ArrowRight size={40} className="mb-2 shrink-0 transition group-hover:translate-x-2 group-hover:text-accent" />
+          </Link>
+          <p className="mt-8 text-center text-sm text-muted">
+            Want something like this?{" "}
+            <a href={`mailto:${profile.email}`} className="link-underline text-ink">
+              Let’s talk
+            </a>
+            .
+          </p>
+        </Reveal>
+      </main>
+    </>
   );
 }

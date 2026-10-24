@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/lib/data";
 
 const sans = Geist({ variable: "--f-sans", subsets: ["latin"] });
 const mono = Geist_Mono({ variable: "--f-mono", subsets: ["latin"] });
+const display = Instrument_Serif({
+  variable: "--f-display",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
@@ -21,17 +27,22 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f5f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#090b0e" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0c" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f1ea" },
   ],
 };
 
 // runs before paint so the saved theme never flashes
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}catch(e){}`;
+const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;else if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light'}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
+      className={`${sans.variable} ${mono.variable} ${display.variable}`}
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

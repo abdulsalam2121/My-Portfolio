@@ -39,7 +39,7 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
         : "bg-surface-2 text-muted hover:text-ink";
 
   return (
-    <div>
+    <div className="min-w-0">
       <BrowserFrame url={url}>
         <motion.div
           className="relative overflow-hidden bg-white"

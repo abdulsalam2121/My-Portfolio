@@ -1,18 +1,19 @@
-import { Shell } from "@/components/Shell";
-import { About } from "@/components/sections/About";
-import { Contact } from "@/components/sections/Contact";
-import { Experience } from "@/components/sections/Experience";
-import { Overview } from "@/components/sections/Overview";
-import { Projects } from "@/components/sections/Projects";
+import { About } from "@/components/About";
+import { Contact } from "@/components/Contact";
+import { Hero } from "@/components/Hero";
+import { Nav } from "@/components/Nav";
+import { Work } from "@/components/Work";
 
 export default function Home() {
   return (
-    <Shell>
-      <Overview />
-      <Projects />
-      <Experience />
-      <About />
-      <Contact />
-    </Shell>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Work />
+        <About />
+        <Contact />
+      </main>
+    </>
   );
 }

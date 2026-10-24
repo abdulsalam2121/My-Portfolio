@@ -8,6 +8,8 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/abdul-salam-ghanghro-6ab797207/",
   cv: "/Abdul_Salam_Ghanghro_CV.pdf",
   site: "https://abdulsalam.vercel.app",
+  summary:
+    "I design, build and ship complete web products, from the React interface to the Node API to the VPS it runs on.",
 };
 
 export type Shot = { src: string; w: number; h: number; caption: string };
