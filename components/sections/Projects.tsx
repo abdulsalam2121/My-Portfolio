@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, ArrowUpRight, FolderKanban, Github } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Code, FolderKanban } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Reveal } from "../Reveal";
@@ -167,7 +167,7 @@ function RepoDetail({ w }: { w: (typeof otherWork)[number] }) {
         rel="noreferrer"
         className="mt-8 inline-flex h-10 items-center gap-2 rounded-lg border border-line px-4 text-sm font-semibold transition hover:border-muted"
       >
-        <Github size={16} /> View on GitHub <ArrowUpRight size={14} />
+        <Code size={16} /> View on GitHub <ArrowUpRight size={14} />
       </a>
     </div>
   );

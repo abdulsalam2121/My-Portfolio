@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Check, Copy, FileText, Linkedin, Mail, Send } from "lucide-react";
+import { ArrowUpRight, Briefcase, Check, Copy, FileText, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "../Reveal";
 import { SectionHead } from "./ui";
@@ -31,7 +31,7 @@ export function Contact() {
   }
 
   const links = [
-    { icon: Linkedin, label: "LinkedIn", href: profile.linkedin },
+    { icon: Briefcase, label: "LinkedIn", href: profile.linkedin },
     { icon: FileText, label: "Résumé (PDF)", href: profile.cv },
   ];
 
