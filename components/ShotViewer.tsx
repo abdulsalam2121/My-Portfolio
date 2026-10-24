@@ -77,7 +77,7 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="pointer-events-none absolute bottom-4 right-3 w-[20%] min-w-[84px] max-w-[150px] overflow-hidden rounded-[1.2rem] border-[4px] border-[#14152a] bg-white shadow-[0_24px_50px_-14px_rgba(0,0,0,0.65)] sm:right-5"
+            className="pointer-events-none absolute -bottom-8 -right-2 z-10 w-[21%] min-w-[84px] max-w-[150px] overflow-hidden rounded-[1.2rem] border-[4px] border-[#14152a] bg-white shadow-[0_24px_50px_-14px_rgba(0,0,0,0.65)] sm:-right-4 lg:-right-5"
           >
             <Image src={s.phone} alt={`${s.caption}, mobile view`} width={780} height={1688} sizes="150px" className="h-auto w-full" />
           </motion.div>
@@ -85,7 +85,7 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
       </AnimatePresence>
       </div>
 
-      <div className="mt-4 flex items-center gap-3">
+      <div className={`flex items-center gap-3 transition-[margin] duration-500 ${s.phone ? "mt-11" : "mt-4"}`}>
         <div className="no-scrollbar flex flex-1 gap-2 overflow-x-auto pb-1">
           {shots.map((sh, n) => (
             <button
