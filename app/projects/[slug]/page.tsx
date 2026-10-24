@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { ShotViewer } from "@/components/ShotViewer";
@@ -20,7 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${p.title} case study`, description: p.summary };
 }
 
-export default async function ProjectPage({ params }: Props) {
+export default function ProjectPage({ params }: Props) {
+  // params is read inside a Suspense boundary so the route shell can render instantly
+  return (
+    <Suspense fallback={null}>
+      <Project params={params} />
+    </Suspense>
+  );
+}
+
+async function Project({ params }: Props) {
   const { slug } = await params;
   const index = projects.findIndex((x) => x.slug === slug);
   if (index === -1) notFound();

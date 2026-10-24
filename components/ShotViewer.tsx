@@ -44,6 +44,7 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
       <BrowserFrame url={url}>
         <motion.div
           className="relative overflow-hidden bg-white"
+          initial={{ aspectRatio: shots[0].w / shots[0].h }}
           animate={{ aspectRatio: s.w / s.h }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >

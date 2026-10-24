@@ -13,14 +13,16 @@ export function Reveal({
   y?: number;
   className?: string;
 }) {
+  // The initial state must be identical on server and client, or React reports a hydration
+  // mismatch. So reduced motion is handled in the transition (instant), never in `initial`.
   const reduce = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y }}
+      initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={reduce ? { duration: 0 } : { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
