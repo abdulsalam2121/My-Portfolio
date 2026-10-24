@@ -63,7 +63,7 @@ export function Contact() {
 
       <footer className="flex flex-col items-center justify-between gap-2 py-10 text-xs text-muted sm:flex-row">
         <span>
-          © {new Date().getFullYear()} {profile.name}
+          © 2026 {profile.name}
         </span>
         <span className="font-mono">Built with Next.js · deployed on Vercel</span>
       </footer>
