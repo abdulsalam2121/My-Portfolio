@@ -12,7 +12,7 @@ export const profile = {
     "I design, build and ship complete web products, from the React interface to the Node API to the VPS it runs on.",
 };
 
-export type Shot = { src: string; w: number; h: number; caption: string };
+export type Shot = { src: string; w: number; h: number; caption: string; /** mobile capture shown as a phone overlay on this slide */ phone?: string };
 
 export type Project = {
   slug: string;
@@ -34,7 +34,7 @@ export type Project = {
   mobile: Shot;
 };
 
-const d = (src: string, caption: string, h = 1000, w = 1600): Shot => ({ src, w, h, caption });
+const d = (src: string, caption: string, h = 1000, w = 1600, phone?: string): Shot => ({ src, w, h, caption, phone });
 
 export const projects: Project[] = [
   {
@@ -63,13 +63,13 @@ export const projects: Project[] = [
     ],
     brand: { from: "#4338ca", to: "#a21caf" },
     shots: [
-      d("/shots/loyalty-hero-d.webp", "Landing page"),
+      d("/shots/loyalty-hero-d.webp", "Landing page", 1000, 1600, "/shots/loyalty-hero-m.webp"),
       d("/shots/lp-dashboard.webp", "Business dashboard", 682, 1536),
       d("/shots/lp-pos.webp", "POS terminal", 682, 1536),
       d("/shots/lp-cards.webp", "QR card management", 682, 1536),
       d("/shots/lp-transactions.webp", "Transaction audit trail", 682, 1536),
       d("/shots/lp-rules.webp", "Cashback rules & tiers", 682, 1536),
-      d("/shots/loyalty-features-d.webp", "Feature overview"),
+      d("/shots/loyalty-features-d.webp", "Feature overview", 1000, 1600, "/shots/loyalty-features-m.webp"),
     ],
     mobile: { src: "/shots/loyalty-hero-m.webp", w: 780, h: 1688, caption: "Mobile" },
   },
@@ -98,8 +98,8 @@ export const projects: Project[] = [
     ],
     brand: { from: "#1d4ed8", to: "#6d3fd9" },
     shots: [
-      d("/shots/covercell-hero-d.webp", "Landing page"),
-      d("/shots/covercell-pricing-d.webp", "Plans & pricing"),
+      d("/shots/covercell-hero-d.webp", "Landing page", 1000, 1600, "/shots/covercell-hero-m.webp"),
+      d("/shots/covercell-pricing-d.webp", "Plans & pricing", 1000, 1600, "/shots/covercell-pricing-m.webp"),
       d("/shots/cc-services.webp", "What's covered"),
       d("/shots/cc-signin.webp", "Customer sign-in"),
       d("/shots/cc-blog.webp", "Content hub"),

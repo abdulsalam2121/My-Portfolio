@@ -40,6 +40,7 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
 
   return (
     <div className="min-w-0">
+      <div className="relative">
       <BrowserFrame url={url}>
         <motion.div
           className="relative overflow-hidden bg-white"
@@ -66,6 +67,23 @@ export function ShotViewer({ shots, url, onDark = false }: { shots: Shot[]; url:
           </AnimatePresence>
         </motion.div>
       </BrowserFrame>
+
+      {/* phone view, shown on slides that have a matching mobile capture */}
+      <AnimatePresence>
+        {s.phone && (
+          <motion.div
+            key={s.phone}
+            initial={{ opacity: 0, y: 24, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="pointer-events-none absolute bottom-4 right-3 w-[20%] min-w-[84px] max-w-[150px] overflow-hidden rounded-[1.2rem] border-[4px] border-[#14152a] bg-white shadow-[0_24px_50px_-14px_rgba(0,0,0,0.65)] sm:right-5"
+          >
+            <Image src={s.phone} alt={`${s.caption}, mobile view`} width={780} height={1688} sizes="150px" className="h-auto w-full" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      </div>
 
       <div className="mt-4 flex items-center gap-3">
         <div className="no-scrollbar flex flex-1 gap-2 overflow-x-auto pb-1">

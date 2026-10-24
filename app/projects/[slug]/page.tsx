@@ -2,7 +2,6 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PhoneFrame } from "@/components/BrowserFrame";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { ShotViewer } from "@/components/ShotViewer";
@@ -82,13 +81,7 @@ export default async function ProjectPage({ params }: Props) {
 
         <Reveal className="mt-24">
           <p className="label mb-5">The product, screen by screen</p>
-          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_190px]">
-            <ShotViewer shots={p.shots} url={p.liveLabel} />
-            <div className="hidden lg:block">
-              <PhoneFrame src={p.mobile.src} alt={`${p.title} on mobile`} />
-              <p className="label mt-3 text-center">Mobile</p>
-            </div>
-          </div>
+          <ShotViewer shots={p.shots} url={p.liveLabel} />
         </Reveal>
 
         <Reveal className="mt-24">
