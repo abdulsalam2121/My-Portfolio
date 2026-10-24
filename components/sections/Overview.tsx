@@ -80,8 +80,8 @@ export async function Overview() {
         ))}
       </div>
 
-      <div className="mt-3 grid gap-3 lg:grid-cols-[1.35fr_1fr]">
-        <Reveal>
+      <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[1.35fr_1fr]">
+        <Reveal className="min-w-0">
           <div className="panel h-full p-5">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="font-semibold">Live now</h3>
@@ -116,7 +116,7 @@ export async function Overview() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08}>
+        <Reveal delay={0.08} className="min-w-0">
           <div className="panel flex h-full flex-col p-5">
             <h3 className="font-semibold">Try it on your phone</h3>
             <p className="mt-1 text-sm text-muted">Scan to open the live LoyaltyPro app.</p>

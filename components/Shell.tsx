@@ -23,7 +23,7 @@ function useScrollSpy(enabled: boolean) {
     if (!enabled) return;
     const els = nav.map((n) => document.getElementById(n.id)).filter(Boolean) as HTMLElement[];
     const on = () => {
-      const y = window.scrollY + 140;
+      const y = window.scrollY + window.innerHeight * 0.35;
       let cur = els[0]?.id ?? "overview";
       for (const el of els) if (el.offsetTop <= y) cur = el.id;
       // pin the last item when the page bottoms out
