@@ -24,7 +24,7 @@ export function Contact() {
           <h2 className="display text-[clamp(2.8rem,8vw,6.5rem)]">
             Have something
             <br />
-            to <em className="text-accent">build?</em>
+            to <em className="text-grad">build?</em>
           </h2>
           <p className="mt-6 max-w-lg text-muted">
             I’m available for freelance projects and remote junior full-stack roles. Tell me what you’re making — I
@@ -34,7 +34,7 @@ export function Contact() {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${profile.email}?subject=Let%E2%80%99s%20work%20together`}
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-ink transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-grad px-6 py-3.5 text-sm font-medium shadow-[0_10px_30px_-10px_#5b5cff] transition hover:brightness-110"
             >
               {profile.email} <ArrowUpRight size={16} />
             </a>

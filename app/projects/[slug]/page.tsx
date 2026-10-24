@@ -40,12 +40,12 @@ export default async function ProjectPage({ params }: Props) {
             {p.kind} · {p.year}
           </p>
           <h1 className="display text-[clamp(3.5rem,11vw,9rem)]">{p.title}</h1>
-          <p className="display mt-4 text-3xl italic text-accent sm:text-4xl">{p.tagline}</p>
+          <p className="display mt-4 text-3xl italic text-grad sm:text-4xl">{p.tagline}</p>
           <a
             href={p.live}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:bg-accent hover:text-accent-ink"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:bg-accent hover:text-bg"
           >
             Visit {p.liveLabel} <ArrowUpRight size={15} />
           </a>

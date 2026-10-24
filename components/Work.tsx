@@ -29,7 +29,7 @@ export function Work() {
                 0{i + 1} · {p.kind} · {p.year}
               </p>
               <h3 className="display text-6xl sm:text-7xl">{p.title}</h3>
-              <p className="display mt-3 text-2xl italic text-accent">{p.tagline}</p>
+              <p className="display mt-3 text-2xl italic text-grad">{p.tagline}</p>
               <p className="mt-6 leading-relaxed text-muted">{p.summary}</p>
               <ul className="mt-6 space-y-2.5 text-sm">
                 {p.highlights.slice(0, 4).map((h) => (
@@ -51,7 +51,7 @@ export function Work() {
                   href={p.live}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:bg-accent hover:text-accent-ink"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-bg transition hover:bg-accent hover:text-bg"
                 >
                   Visit {p.liveLabel} <ArrowUpRight size={15} />
                 </a>

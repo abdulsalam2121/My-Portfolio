@@ -13,10 +13,18 @@ const facts = [
 export function Hero() {
   return (
     <section className="relative mx-auto grid max-w-6xl gap-12 px-5 pb-16 pt-32 sm:pt-40 lg:grid-cols-[1.35fr_0.65fr] lg:items-end">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-10 left-1/2 -z-10 h-[40rem] w-screen -translate-x-1/2"
+        style={{
+          background:
+            "radial-gradient(46rem 24rem at 82% 8%, color-mix(in srgb, #5b6cff 22%, transparent), transparent 70%), radial-gradient(34rem 22rem at 8% 30%, color-mix(in srgb, #8b5cf6 14%, transparent), transparent 70%)",
+        }}
+      />
       <div>
         <Reveal>
           <div className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5">
-            <span className="pulse-dot size-2 rounded-full bg-accent" />
+            <span className="pulse-dot size-2 rounded-full bg-grad" />
             <span className="label !text-ink">Open to freelance &amp; remote roles</span>
           </div>
         </Reveal>
@@ -25,7 +33,7 @@ export function Hero() {
           <h1 className="display text-[clamp(3rem,7.4vw,6.4rem)]">
             I build web products
             <br />
-            people <em className="text-accent">actually</em> use.
+            people <em className="text-grad">actually</em> use.
           </h1>
         </Reveal>
 
@@ -40,7 +48,7 @@ export function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#work"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-ink transition hover:brightness-110"
+              className="group inline-flex items-center gap-2 rounded-full bg-grad px-6 py-3.5 text-sm font-medium shadow-[0_10px_30px_-10px_#5b5cff] transition hover:brightness-110"
             >
               See the work
               <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />

@@ -46,7 +46,7 @@ export function Nav() {
         } ${open ? "!rounded-3xl" : ""}`}
       >
         <Link href="/" className="flex items-center gap-2.5 pl-1 font-medium tracking-tight" onClick={() => setOpen(false)}>
-          <span className="grid size-8 place-items-center rounded-full bg-accent font-mono text-[11px] font-semibold text-accent-ink shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
+          <span className="grid size-8 place-items-center rounded-full bg-grad font-mono text-[11px] font-semibold shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_20%,transparent)]">
             AS
           </span>
           <span className="hidden sm:inline">{profile.short}</span>
@@ -78,7 +78,7 @@ export function Nav() {
             href={profile.cv}
             target="_blank"
             rel="noreferrer"
-            className="hidden items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg transition hover:bg-accent hover:text-accent-ink sm:inline-flex"
+            className="hidden items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg transition hover:bg-accent hover:text-bg sm:inline-flex"
           >
             Résumé <ArrowUpRight size={14} />
           </a>
