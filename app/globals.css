@@ -149,3 +149,6 @@ body {
   html { scroll-behavior: auto; }
   .float, .float-slow, .marquee, .drift, .live-dot { animation: none; }
 }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
