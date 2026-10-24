@@ -22,7 +22,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <h1 className="display text-[clamp(3.2rem,9.5vw,7.6rem)]">
+          <h1 className="display text-[clamp(3rem,7.4vw,6.4rem)]">
             I build web products
             <br />
             people <em className="text-accent">actually</em> use.
